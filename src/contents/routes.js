@@ -3,12 +3,12 @@ import { Route, IndexRoute } from 'react-router';
 
 import Layout from './containers/layout';
 import Home from './pages/home/index';
-import About from './pages/about/index';
 
 
-export default (
+const routes = (
   <Route path="/" component={Layout}>
     <IndexRoute component={Home} />
-    <Route path="about" component={About} />
   </Route>
 );
+
+export default routes;
