@@ -1,20 +1,19 @@
 {
-  "name": "react-express-starter",
+  "name": "firecaptain",
   "version": "0.0.1",
-  "description": "React + Express starter template",
+  "description": "firedrill app",
   "main": "src/main.js",
-  "homepage": "https://github.com/bharani91/react-express-starter",
-  "author": "Bharani M",
+  "homepage": "https://github.com/rileymjohnson/firecaptain-react",
+  "author": "Riley Johnson",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bharani91/react-express-starter"
+    "url": "https://github.com/rileymjohnson/firecaptain-react"
   },
   "keywords": [
     "react",
     "express",
-    "postcss",
-    "starter template"
+    "firedrill"
   ],
   "scripts": {
     "start": "better-npm-run start",
