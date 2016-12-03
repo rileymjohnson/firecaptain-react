@@ -1,17 +1,16 @@
 var path = require('path');
 var webpack = require('webpack');
-var config = require('./webpack.config.development.js');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var config = require('./webpack.config.dev.js');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var _ = require('lodash');
 var embedFileSize = 50000;
 
 module.exports = _.extend({}, config, {
   entry: [
-    path.join(__dirname, 'src/main.js')
+    path.join(__dirname, '../src/main.js')
   ],
   output: {
-    path: path.join(__dirname, '/dist/'),
+    path: path.join(__dirname, '../dist/'),
     filename: '[name]-[hash].min.js'
   },
   plugins: [
@@ -33,7 +32,6 @@ module.exports = _.extend({}, config, {
         minifyURLs: true
       }
     }),
-    new ExtractTextPlugin('[name]-[hash].min.css'),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false,
@@ -48,10 +46,6 @@ module.exports = _.extend({}, config, {
   module: {
     loaders: [
       {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style', 'css?modules&localIdentName=[name]---[local]---[hash:base64:5]!postcss')
-      },
-      {
         test: /\.js?$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
@@ -59,22 +53,6 @@ module.exports = _.extend({}, config, {
       {
         test: /\.json?$/,
         loader: 'json'
-      },
-      { test: /\.svg/,
-        loader: 'url?limit=' + embedFileSize + '&mimetype=image/svg+xml'
-      },
-      { test: /\.png$/,
-        loader: 'url?limit=' + embedFileSize + '&mimetype=image/png'
-      },
-      { test: /\.jpg/,
-        loader: 'url?limit=' + embedFileSize + '&mimetype=image/jpeg'
-      },
-      { test: /\.gif/,
-        loader: 'url?limit=' + embedFileSize + '&mimetype=image/gif'
-      },
-      {
-        test: /\.(otf|eot|ttf|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url?limit=' + embedFileSize
       }
     ]
   },

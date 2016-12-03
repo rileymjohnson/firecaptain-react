@@ -7,10 +7,10 @@ module.exports = {
   devtool: 'source-map',
   entry: [
     'webpack-hot-middleware/client',
-    path.join(__dirname, 'src/main.js')
+    path.join(__dirname, '../src/main.js')
   ],
   output: {
-    path: path.join(__dirname, '/dist/'),
+    path: path.join(__dirname, '../dist/'),
     filename: '[name].js',
     publicPath: '/'
   },
@@ -38,35 +38,11 @@ module.exports = {
       {
         test: /\.json?$/,
         loader: 'json'
-      },
-      {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader?modules&&importLoaders=1&localIdentName=[name]---[local]---[hash:base64:5]!postcss-loader'
-      },
-      { test: /\.svg/,
-        loader: 'url?limit=' + embedFileSize + '&mimetype=image/svg+xml'
-      },
-      { test: /\.png$/,
-        loader: 'url?limit=' + embedFileSize + '&mimetype=image/png'
-      },
-      { test: /\.jpg/,
-        loader: 'url?limit=' + embedFileSize + '&mimetype=image/jpeg'
-      },
-      { test: /\.gif/,
-        loader: 'url?limit=' + embedFileSize + '&mimetype=image/gif'
-      },
-      {
-        test: /\.(otf|eot|ttf|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'url?limit=' + embedFileSize
       }
     ]
   },
   _hotPort: 8000,
   resolve: {
-    extensions: ['', '.js', '.jsx', '.css']
-  },
-  postcss: [
-    require('autoprefixer'),
-    require('postcss-nested')
-  ]
+    extensions: ['', '.js', '.jsx']
+  }
 }
